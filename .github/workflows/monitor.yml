@@ -46,4 +46,25 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add listings_state.json
           git commit -m "Update listing state [skip ci]"
-          git push
+          # Another run or a manual push can land between checkout and push. Our
+          # freshly parsed state is always the authoritative one, so replay it on
+          # top of whatever origin has rather than failing and re-alerting later.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "State pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected. Syncing with origin/main and retrying."
+            cp listings_state.json "$RUNNER_TEMP/state.json"
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$RUNNER_TEMP/state.json" listings_state.json
+            if [ -z "$(git status --porcelain listings_state.json)" ]; then
+              echo "Origin already has this state. Nothing to push."
+              exit 0
+            fi
+            git add listings_state.json
+            git commit -m "Update listing state [skip ci]"
+          done
+          echo "Could not push state after 3 attempts."
+          exit 1
