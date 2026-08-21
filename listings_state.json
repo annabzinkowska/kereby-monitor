@@ -31,7 +31,7 @@
     "req": "Penthouse|Tagterrasse",
     "rooms": "4",
     "size": "126",
-    "state": "reserved",
+    "state": "available",
     "url": "https://kereby.dk/bolig/strandboulevarden-61-5-th-2100-kobenhavn/",
     "zip": "2100"
   },
@@ -91,7 +91,7 @@
     "req": "",
     "rooms": "4",
     "size": "102",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "1855"
   },
