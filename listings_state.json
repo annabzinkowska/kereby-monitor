@@ -202,5 +202,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/roskildevej-47-st-2000-frederiksberg/",
     "zip": "2000"
+  },
+  "27573": {
+    "address": "Amagerbrogade 238A, 1. tv, 2300 København S",
+    "lat": "55.64602411",
+    "lng": "12.61417938",
+    "rent": "12116",
+    "req": "",
+    "rooms": "2",
+    "size": "67",
+    "state": "reserved",
+    "url": "",
+    "zip": "2300"
   }
 }
