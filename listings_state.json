@@ -7,8 +7,8 @@
     "req": "Penthouse|Tagterrasse",
     "rooms": "3",
     "size": "114",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/sortedam-dossering-45-5-tv-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   },
   "24075": {
@@ -67,7 +67,7 @@
     "req": "Elevator",
     "rooms": "5",
     "size": "108",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2000"
   },
@@ -79,7 +79,7 @@
     "req": "Penthouse|Altan",
     "rooms": "5",
     "size": "108",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2300"
   },
@@ -115,7 +115,7 @@
     "req": "",
     "rooms": "3",
     "size": "58",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2300"
   },
@@ -127,7 +127,7 @@
     "req": "Delevenlig|Penthouse|Altan",
     "rooms": "3",
     "size": "81",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2000"
   },
@@ -139,7 +139,7 @@
     "req": "Altan",
     "rooms": "2",
     "size": "61",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2300"
   },
