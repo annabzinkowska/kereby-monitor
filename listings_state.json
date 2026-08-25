@@ -223,8 +223,8 @@
     "req": "Delevenlig",
     "rooms": "4",
     "size": "96",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/herninggade-26-st-2100-kobenhavn/",
+    "state": "reserved",
+    "url": "",
     "zip": "2100"
   }
 }
