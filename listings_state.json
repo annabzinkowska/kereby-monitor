@@ -214,5 +214,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "27586": {
+    "address": "Herninggade 26, st., 2100 København Ø",
+    "lat": "55.70840011",
+    "lng": "12.58828327",
+    "rent": "21600",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "96",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/herninggade-26-st-2100-kobenhavn/",
+    "zip": "2100"
   }
 }
