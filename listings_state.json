@@ -35,30 +35,6 @@
     "url": "https://kereby.dk/bolig/strandboulevarden-61-5-th-2100-kobenhavn/",
     "zip": "2100"
   },
-  "27317": {
-    "address": "Gammel Kongevej 136, 3. th, 1850 Frederiksberg C",
-    "lat": "55.67705735",
-    "lng": "12.53960323",
-    "rent": "22208",
-    "req": "",
-    "rooms": "5",
-    "size": "135",
-    "state": "completed",
-    "url": "",
-    "zip": "1850"
-  },
-  "27331": {
-    "address": "Amagerbrogade 118, 3. tv, 2300 København S",
-    "lat": "55.65842116",
-    "lng": "12.60721575",
-    "rent": "14679",
-    "req": "",
-    "rooms": "3",
-    "size": "93",
-    "state": "completed",
-    "url": "",
-    "zip": "2300"
-  },
   "27378": {
     "address": "Falkoner Alle 12B, 4. th, 2000 Frederiksberg",
     "lat": "55.67947086",
@@ -71,30 +47,6 @@
     "url": "",
     "zip": "2000"
   },
-  "27387": {
-    "address": "Amagerbrogade 111, 5., 2300 København S",
-    "lat": "55.65829646",
-    "lng": "12.60782617",
-    "rent": "25650",
-    "req": "Penthouse|Altan",
-    "rooms": "5",
-    "size": "108",
-    "state": "completed",
-    "url": "",
-    "zip": "2300"
-  },
-  "27413": {
-    "address": "Hollændervej 21, 2. tv, 1855 Frederiksberg C",
-    "lat": "55.67627306",
-    "lng": "12.53398387",
-    "rent": "16652",
-    "req": "",
-    "rooms": "4",
-    "size": "102",
-    "state": "completed",
-    "url": "",
-    "zip": "1855"
-  },
   "27418": {
     "address": "Nygårdsvej 16, 2. tv, 2100 København Ø",
     "lat": "55.71255811",
@@ -106,42 +58,6 @@
     "state": "completed",
     "url": "",
     "zip": "2100"
-  },
-  "27437": {
-    "address": "Woltersgade 9, 2. tv, 2300 København S",
-    "lat": "55.66444826",
-    "lng": "12.60811456",
-    "rent": "9179",
-    "req": "",
-    "rooms": "3",
-    "size": "58",
-    "state": "completed",
-    "url": "",
-    "zip": "2300"
-  },
-  "27452": {
-    "address": "Franckesvej 8, 5., 2000 Frederiksberg",
-    "lat": "55.68614007",
-    "lng": "12.54051087",
-    "rent": "13156",
-    "req": "Delevenlig|Penthouse|Altan",
-    "rooms": "3",
-    "size": "81",
-    "state": "completed",
-    "url": "",
-    "zip": "2000"
-  },
-  "27457": {
-    "address": "Rodosvej 5, 4. tv, 2300 København S",
-    "lat": "55.65055028",
-    "lng": "12.61312805",
-    "rent": "9653",
-    "req": "Altan",
-    "rooms": "2",
-    "size": "61",
-    "state": "completed",
-    "url": "",
-    "zip": "2300"
   },
   "27469": {
     "address": "Ved Klosteret 6, 1. tv, 2100 København Ø",
@@ -175,7 +91,7 @@
     "req": "Tagterrasse",
     "rooms": "1",
     "size": "43",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2100"
   },
@@ -226,5 +142,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
+  },
+  "27602": {
+    "address": "Christian IX's Gade 5, 2. tv, 1111 København K",
+    "lat": "55.68217824",
+    "lng": "12.58069735",
+    "rent": "32938",
+    "req": "Elevator",
+    "rooms": "4",
+    "size": "155",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/christian-ixs-gade-5-2-tv-1111-kobenhavn-k/",
+    "zip": "1111"
   }
 }
