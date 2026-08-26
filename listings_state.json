@@ -7,8 +7,8 @@
     "req": "Penthouse|Tagterrasse",
     "rooms": "3",
     "size": "114",
-    "state": "reserved",
-    "url": "",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/sortedam-dossering-45-5-tv-2200-kobenhavn-n/",
     "zip": "2200"
   },
   "24075": {
@@ -199,8 +199,8 @@
     "req": "Delevenlig",
     "rooms": "6",
     "size": "160",
-    "state": "reserved",
-    "url": "",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/roskildevej-47-st-2000-frederiksberg/",
     "zip": "2000"
   },
   "27573": {
@@ -211,8 +211,8 @@
     "req": "",
     "rooms": "2",
     "size": "67",
-    "state": "reserved",
-    "url": "",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/amagerbrogade-238a-1-tv-2300-kobenhavn-s/",
     "zip": "2300"
   },
   "27586": {
