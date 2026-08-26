@@ -154,5 +154,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/christian-ixs-gade-5-2-tv-1111-kobenhavn-k/",
     "zip": "1111"
+  },
+  "27616": {
+    "address": "Allersgade 1, 2. th, 2200 København N",
+    "lat": "55.69655616",
+    "lng": "12.54590578",
+    "rent": "11896",
+    "req": "Altan",
+    "rooms": "2",
+    "size": "74",
+    "state": "reserved",
+    "url": "",
+    "zip": "2200"
   }
 }
