@@ -131,18 +131,6 @@
     "url": "",
     "zip": "2300"
   },
-  "27586": {
-    "address": "Herninggade 26, st., 2100 København Ø",
-    "lat": "55.70840011",
-    "lng": "12.58828327",
-    "rent": "21600",
-    "req": "Delevenlig",
-    "rooms": "4",
-    "size": "96",
-    "state": "reserved",
-    "url": "",
-    "zip": "2100"
-  },
   "27602": {
     "address": "Christian IX's Gade 5, 2. tv, 1111 København K",
     "lat": "55.68217824",
@@ -166,5 +154,41 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "27628": {
+    "address": "Drogdensgade 22, st. th, 2300 København S",
+    "lat": "55.65836821",
+    "lng": "12.60844052",
+    "rent": "14270",
+    "req": "",
+    "rooms": "4",
+    "size": "89",
+    "state": "reserved",
+    "url": "",
+    "zip": "2300"
+  },
+  "27632": {
+    "address": "Amagerbrogade 120, 5., 2300 København S",
+    "lat": "55.65830134",
+    "lng": "12.60736711",
+    "rent": "21195",
+    "req": "Delevenlig",
+    "rooms": "5",
+    "size": "135",
+    "state": "reserved",
+    "url": "",
+    "zip": "2300"
+  },
+  "27650": {
+    "address": "Herninggade 26, st., 2100 København Ø",
+    "lat": "55.70840011",
+    "lng": "12.58828327",
+    "rent": "21600",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "96",
+    "state": "reserved",
+    "url": "",
+    "zip": "2100"
   }
 }
