@@ -121,10 +121,53 @@ You should get exactly one repost email, and no duplicate on the run after.
 
 ## Schedule
 
-The workflow runs every 5 minutes via cron and on `workflow_dispatch`. A
-`concurrency` group prevents overlapping runs from corrupting the state file.
-GitHub often delays scheduled runs during busy periods, so treat the interval as
-a best effort rather than a guarantee.
+GitHub's native cron scheduler can delay or drop runs, so the reliable schedule
+uses [cron-job.org](https://cron-job.org/) to call the workflow dispatch API
+every 5 minutes. The workflow intentionally exposes only its
+`workflow_dispatch` trigger; scheduling is managed by cron-job.org.
+
+### Configure cron-job.org
+
+1. In GitHub, create a fine-grained personal access token under **Settings >
+   Developer settings > Personal access tokens > Fine-grained tokens**.
+2. Set the resource owner to `annabzinkowska`, grant access only to
+   `kereby-monitor`, and give it **Actions: Read and write** permission.
+3. Give the token an expiration date and add a reminder to replace it before it
+   expires. Do not commit the token or add it to this repository.
+4. Create a cron-job.org job that runs every 5 minutes with these settings:
+
+| Setting | Value |
+| --- | --- |
+| Method | `POST` |
+| URL | `https://api.github.com/repos/annabzinkowska/kereby-monitor/actions/workflows/monitor.yml/dispatches` |
+| Body | `{"ref":"main"}` |
+| Successful response | HTTP `204` |
+
+Add these request headers, replacing `<token>` only in cron-job.org:
+
+```text
+Authorization: Bearer <token>
+Content-Type: application/json
+Accept: application/vnd.github+json
+X-GitHub-Api-Version: 2022-11-28
+```
+
+Enable cron-job.org failure notifications. Use its test function and confirm a
+`204` response, then check that GitHub shows a successful run with event
+`workflow_dispatch`.
+
+The workflow's `concurrency` group serializes dispatches, so a delayed or
+duplicate request cannot run alongside another monitor job and corrupt the
+state file.
+
+### Scheduler recovery
+
+If external runs stop, check the cron-job.org execution history first. A `401`
+or `403` response normally means the GitHub token expired, was revoked, or no
+longer has Actions write permission. Create a replacement fine-grained token,
+update it only in cron-job.org, and use the test function again. The workflow
+can always be started manually from GitHub's Actions tab while the scheduler is
+being repaired.
 
 ## Configuration
 
