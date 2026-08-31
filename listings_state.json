@@ -11,18 +11,6 @@
     "url": "https://kereby.dk/bolig/sortedam-dossering-45-5-tv-2200-kobenhavn-n/",
     "zip": "2200"
   },
-  "24075": {
-    "address": "Bjelkes Allé 18A, 5., 2200 København N",
-    "lat": "55.69296156",
-    "lng": "12.54492272",
-    "rent": "16042",
-    "req": "",
-    "rooms": "2",
-    "size": "77",
-    "state": "reserved",
-    "url": "",
-    "zip": "2200"
-  },
   "27113": {
     "address": "Strandboulevarden 61, 5. th, 2100 København Ø",
     "lat": "55.70370866",
@@ -130,18 +118,6 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/christian-ixs-gade-5-2-tv-1111-kobenhavn-k/",
     "zip": "1111"
-  },
-  "27616": {
-    "address": "Allersgade 1, 2. th, 2200 København N",
-    "lat": "55.69655616",
-    "lng": "12.54590578",
-    "rent": "11896",
-    "req": "Altan",
-    "rooms": "2",
-    "size": "74",
-    "state": "reserved",
-    "url": "",
-    "zip": "2200"
   },
   "27628": {
     "address": "Drogdensgade 22, st. th, 2300 København S",
