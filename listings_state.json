@@ -178,5 +178,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
+  },
+  "27672": {
+    "address": "Sundbyvester Plads 7, 4. th, 2300 København S",
+    "lat": "55.6460146",
+    "lng": "12.61337362",
+    "rent": "10575",
+    "req": "",
+    "rooms": "3",
+    "size": "67",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/sundbyvester-plads-7-4-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
