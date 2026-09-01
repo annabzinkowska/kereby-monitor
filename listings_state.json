@@ -175,8 +175,8 @@
     "req": "Elevator|Altan",
     "rooms": "3",
     "size": "100",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/griffenfeldsgade-6-4-th-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
