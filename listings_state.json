@@ -166,5 +166,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "27678": {
+    "address": "Griffenfeldsgade 6, 4. th, 2200 København N",
+    "lat": "55.68940288",
+    "lng": "12.5553332",
+    "rent": "18113",
+    "req": "Elevator|Altan",
+    "rooms": "3",
+    "size": "100",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/griffenfeldsgade-6-4-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
