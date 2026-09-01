@@ -178,5 +178,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "27681": {
+    "address": "Store Kongensgade 11, 3. th, 1264 København K",
+    "lat": "55.68219972",
+    "lng": "12.58540586",
+    "rent": "14528",
+    "req": "",
+    "rooms": "3",
+    "size": "90",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/store-kongensgade-11-3-th-1264-kobenhavn-k/",
+    "zip": "1264"
   }
 }
