@@ -190,5 +190,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1264"
+  },
+  "27690": {
+    "address": "Nordre Fasanvej 271, 2. tv, 2200 København N",
+    "lat": "55.7001485",
+    "lng": "12.53667547",
+    "rent": "9177",
+    "req": "",
+    "rooms": "2",
+    "size": "57",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/nordre-fasanvej-271-2-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
