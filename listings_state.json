@@ -202,5 +202,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "27717": {
+    "address": "Dannebrogsgade 15, st. th, 1660 København V",
+    "lat": "55.67101717",
+    "lng": "12.55280082",
+    "rent": "14455",
+    "req": "",
+    "rooms": "3",
+    "size": "89",
+    "state": "reserved",
+    "url": "",
+    "zip": "1660"
   }
 }
