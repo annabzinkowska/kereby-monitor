@@ -223,8 +223,8 @@
     "req": "Elevator",
     "rooms": "4",
     "size": "97",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/helgolandsgade-2-3-th-1653-kobenhavn-v/",
+    "state": "reserved",
+    "url": "",
     "zip": "1653"
   }
 }
