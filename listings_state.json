@@ -226,5 +226,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1653"
+  },
+  "27754": {
+    "address": "Valby Langgade 122, 3. th, 2500 Valby",
+    "lat": "55.66669281",
+    "lng": "12.50544774",
+    "rent": "11638",
+    "req": "Altan",
+    "rooms": "3",
+    "size": "75",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/valby-langgade-122-3-th-2500-valby/",
+    "zip": "2500"
   }
 }
