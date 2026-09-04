@@ -23,42 +23,6 @@
     "url": "https://kereby.dk/bolig/strandboulevarden-61-5-th-2100-kobenhavn/",
     "zip": "2100"
   },
-  "27378": {
-    "address": "Falkoner Alle 12B, 4. th, 2000 Frederiksberg",
-    "lat": "55.67947086",
-    "lng": "12.53386498",
-    "rent": "17856",
-    "req": "Elevator",
-    "rooms": "5",
-    "size": "108",
-    "state": "completed",
-    "url": "",
-    "zip": "2000"
-  },
-  "27418": {
-    "address": "Nygårdsvej 16, 2. tv, 2100 København Ø",
-    "lat": "55.71255811",
-    "lng": "12.57480249",
-    "rent": "13699",
-    "req": "",
-    "rooms": "3",
-    "size": "85",
-    "state": "completed",
-    "url": "",
-    "zip": "2100"
-  },
-  "27469": {
-    "address": "Ved Klosteret 6, 1. tv, 2100 København Ø",
-    "lat": "55.70773436",
-    "lng": "12.56574831",
-    "rent": "17676",
-    "req": "",
-    "rooms": "4",
-    "size": "108",
-    "state": "completed",
-    "url": "",
-    "zip": "2100"
-  },
   "27485": {
     "address": "Stormgade 35, 4. th, 1555 København V",
     "lat": "55.67400222",
@@ -70,42 +34,6 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/stormgade-35-4-th-1555-kobenhavn-v/",
     "zip": "1555"
-  },
-  "27500": {
-    "address": "Nygårdsvej 16B, st. 3, 2100 København Ø",
-    "lat": "55.71281933",
-    "lng": "12.57475749",
-    "rent": "9854",
-    "req": "Tagterrasse",
-    "rooms": "1",
-    "size": "43",
-    "state": "completed",
-    "url": "",
-    "zip": "2100"
-  },
-  "27508": {
-    "address": "Gammel Kongevej 138D, 1., 1850 Frederiksberg C",
-    "lat": "55.67744895",
-    "lng": "12.53977421",
-    "rent": "20140",
-    "req": "Delevenlig",
-    "rooms": "5",
-    "size": "124",
-    "state": "completed",
-    "url": "",
-    "zip": "1850"
-  },
-  "27522": {
-    "address": "Roskildevej 47, st., 2000 Frederiksberg",
-    "lat": "55.67194861",
-    "lng": "12.51382024",
-    "rent": "34667",
-    "req": "Delevenlig",
-    "rooms": "6",
-    "size": "160",
-    "state": "completed",
-    "url": "",
-    "zip": "2000"
   },
   "27602": {
     "address": "Christian IX's Gade 5, 2. tv, 1111 København K",
@@ -119,18 +47,6 @@
     "url": "https://kereby.dk/bolig/christian-ixs-gade-5-2-tv-1111-kobenhavn-k/",
     "zip": "1111"
   },
-  "27628": {
-    "address": "Drogdensgade 22, st. th, 2300 København S",
-    "lat": "55.65836821",
-    "lng": "12.60844052",
-    "rent": "14270",
-    "req": "",
-    "rooms": "4",
-    "size": "89",
-    "state": "completed",
-    "url": "",
-    "zip": "2300"
-  },
   "27632": {
     "address": "Amagerbrogade 120, 5., 2300 København S",
     "lat": "55.65830134",
@@ -139,7 +55,7 @@
     "req": "Delevenlig",
     "rooms": "5",
     "size": "135",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2300"
   },
