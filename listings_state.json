@@ -235,8 +235,8 @@
     "req": "Altan",
     "rooms": "3",
     "size": "75",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/valby-langgade-122-3-th-2500-valby/",
+    "state": "reserved",
+    "url": "",
     "zip": "2500"
   }
 }
