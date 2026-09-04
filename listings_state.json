@@ -214,5 +214,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "27741": {
+    "address": "Helgolandsgade 2, 3. th, 1653 København V",
+    "lat": "55.67285771",
+    "lng": "12.56065793",
+    "rent": "15155",
+    "req": "Elevator",
+    "rooms": "4",
+    "size": "97",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/helgolandsgade-2-3-th-1653-kobenhavn-v/",
+    "zip": "1653"
   }
 }
