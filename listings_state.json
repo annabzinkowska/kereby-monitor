@@ -130,5 +130,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2500"
+  },
+  "27773": {
+    "address": "Sundbyvester Plads 1, 3. tv, 2300 København S",
+    "lat": "55.64605494",
+    "lng": "12.61394816",
+    "rent": "11138",
+    "req": "",
+    "rooms": "3",
+    "size": "69",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/sundbyvester-plads-1-3-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
