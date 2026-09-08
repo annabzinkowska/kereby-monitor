@@ -15,8 +15,10 @@ import os
 import re
 import smtplib
 import sys
+from datetime import datetime, time, timedelta
 from email.message import EmailMessage
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -25,6 +27,30 @@ URL = "https://kereby.dk/bolig/"
 STATE_FILE = Path(__file__).resolve().parent / "listings_state.json"
 REQUEST_TIMEOUT = 30
 USER_AGENT = "Mozilla/5.0 (compatible; kereby-monitor/1.0)"
+TIME_ZONE = ZoneInfo("Europe/Copenhagen")
+
+# Requested search area and monthly-rent ceiling. The postal-code
+# mapping deliberately excludes adjacent areas such as Sydhavn, Valby and
+# Amager, even when their city label starts with "København".
+TARGET_AREAS = frozenset(
+    ("Frederiksberg", "København K", "Nørrebro", "Østerbro", "Vesterbro")
+)
+MAX_MONTHLY_RENT = 20000
+FREDERIKSBERG_ZIPS = frozenset(
+    (
+        "1800",
+        "1810",
+        "1820",
+        "1850",
+        "1860",
+        "1870",
+        "1900",
+        "1920",
+        "1950",
+        "1960",
+        "2000",
+    )
+)
 
 # Fields lifted straight off each card's data attributes. Everything is kept in
 # the snapshot so a later iteration can filter on zip or rent without needing a
@@ -183,7 +209,252 @@ def format_flat(entry):
     return "\n".join(lines)
 
 
-def build_email_body(new, reposted, truncation_note=""):
+def listing_area(entry):
+    """Return the requested Kereby area represented by a listing, if any."""
+    zip_code = re.sub(r"\D", "", entry.get("zip", ""))
+    if zip_code in FREDERIKSBERG_ZIPS:
+        return "Frederiksberg"
+    if zip_code == "2200":
+        return "Nørrebro"
+    if zip_code == "2100":
+        return "Østerbro"
+    try:
+        zip_number = int(zip_code)
+    except ValueError:
+        return ""
+    if 1050 <= zip_number <= 1473:
+        return "København K"
+    if 1500 <= zip_number <= 1799:
+        return "Vesterbro"
+    return ""
+
+
+def monthly_rent(entry):
+    """Return a listing's numeric monthly rent, or None if it is unusable."""
+    digits = re.sub(r"\D", "", entry.get("rent", ""))
+    try:
+        return int(digits) if digits else None
+    except ValueError:
+        return None
+
+
+def matches_booking_preferences(entry):
+    """Whether this available listing meets the agreed area and rent rules."""
+    rent = monthly_rent(entry)
+    return (
+        listing_area(entry) in TARGET_AREAS
+        and rent is not None
+        and rent <= MAX_MONTHLY_RENT
+    )
+
+
+def booking_settings_from_env():
+    """Read opt-in viewing-request settings without ever storing PII in git.
+
+    The automation is deliberately disabled unless every required value is
+    present. In particular, the privacy acceptance and screening confirmations
+    must be set by the applicant, rather than assumed by this program.
+    """
+    if os.environ.get("AUTO_BOOK_VIEWINGS") != "1":
+        return None
+
+    required = ("BOOKING_NAME", "BOOKING_EMAIL", "BOOKING_PHONE")
+    missing = [name for name in required if not os.environ.get(name, "").strip()]
+    if missing:
+        print("Automatic booking disabled: missing " + ", ".join(missing) + ".")
+        return None
+    if os.environ.get("BOOKING_PRIVACY_ACCEPTED") != "1":
+        print("Automatic booking disabled: BOOKING_PRIVACY_ACCEPTED=1 is required.")
+        return None
+
+    phone = re.sub(r"\D", "", os.environ["BOOKING_PHONE"])
+    if phone.startswith("0045"):
+        phone = phone[4:]
+    elif phone.startswith("45") and len(phone) == 10:
+        phone = phone[2:]
+    if len(phone) != 8:
+        print("Automatic booking disabled: BOOKING_PHONE must be a Danish phone number.")
+        return None
+
+    confirmations = {}
+    if os.environ.get("BOOKING_CONFIRM_RKI_NOT_REGISTERED") == "1":
+        confirmations["rki_not_present"] = True
+    if os.environ.get("BOOKING_CONFIRM_NO_PETS") == "1":
+        confirmations["no_pet"] = True
+
+    return {
+        "name": os.environ["BOOKING_NAME"].strip(),
+        "email": os.environ["BOOKING_EMAIL"].strip(),
+        "phone": phone,
+        "screening_confirmations": confirmations,
+    }
+
+
+def extract_booking_config(html):
+    """Extract the JSON configuration used by Kereby's own booking modal."""
+    match = re.search(
+        r"var\s+joratoTemplatesCaseDetail\s*=\s*(\{.*?\});\s*\n//",
+        html,
+        re.DOTALL,
+    )
+    if not match:
+        raise ValueError(
+            "Kereby booking configuration was not found on the detail page"
+        )
+    try:
+        return json.loads(match.group(1))
+    except json.JSONDecodeError as exc:
+        raise ValueError("Kereby booking configuration was not valid JSON") from exc
+
+
+def first_booking_slot(time_slots, now=None):
+    """Mirror Kereby's calendar: first weekday at least two days away, after 14:00."""
+    allowed_times = []
+    for value in time_slots:
+        try:
+            parsed = time.fromisoformat(str(value))
+        except ValueError:
+            continue
+        if parsed >= time(14, 0):
+            allowed_times.append((parsed, str(value)))
+    if not allowed_times:
+        raise ValueError("Kereby offered no viewing time at or after 14:00")
+
+    local_now = now or datetime.now(TIME_ZONE)
+    day = local_now.date() + timedelta(days=2)
+    while day.weekday() >= 5:
+        day += timedelta(days=1)
+    _, slot_time = min(allowed_times)
+    return day, slot_time
+
+
+def screening_answers(questions, confirmations):
+    """Build required true answers, or report questions the applicant must answer."""
+    answers, missing = [], []
+    for row in questions:
+        question = row.get("question", row) if isinstance(row, dict) else {}
+        question_id = question.get("id", "")
+        if confirmations.get(question_id) is not True:
+            text = question.get("questionTemplateDanish") or question.get("questionTemplateEnglish")
+            missing.append(text or question_id or "an unnamed screening question")
+            continue
+        answers.append({"questionId": question_id, "answer": True})
+    return answers, missing
+
+
+def booking_request(entry, settings, session=None, now=None):
+    """Submit one Kereby viewing request and return a result safe for email logs.
+
+    The site's public modal uses this same WordPress endpoint. A fresh detail
+    page is fetched each time so the short-lived nonce and case id are current.
+    Unknown screening questions are never guessed or submitted.
+    """
+    if not entry.get("url"):
+        return False, "listing has no detail-page URL", None
+
+    client = session or requests.Session()
+    client.headers.update({"User-Agent": USER_AGENT})
+    try:
+        detail = client.get(entry["url"], timeout=REQUEST_TIMEOUT)
+        detail.raise_for_status()
+        config = extract_booking_config(detail.text)
+        context = config.get("bookingContext") or {}
+        endpoint = config.get("bookingRestUrl")
+        case_id = context.get("caseId")
+        screening_url = config.get("bookingScreeningUrl")
+        if not endpoint or not case_id:
+            return False, "booking is not available for this listing", None
+
+        headers = {"Accept": "application/json"}
+        if config.get("restNonce"):
+            headers["X-WP-Nonce"] = config["restNonce"]
+        questions = []
+        if screening_url:
+            screening = client.get(
+                screening_url,
+                params={"case_id": case_id},
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            screening.raise_for_status()
+            payload = screening.json()
+            questions = payload.get("questions", payload) if isinstance(payload, dict) else payload
+            if not isinstance(questions, list):
+                return False, "could not read the required screening questions", None
+
+        answers, missing = screening_answers(questions, settings["screening_confirmations"])
+        if missing:
+            return False, "needs your confirmation: " + " | ".join(missing), None
+
+        day, slot_time = first_booking_slot(config.get("timeSlots") or [], now=now)
+        starts_at = datetime.combine(day, time.fromisoformat(slot_time), TIME_ZONE)
+        starts_at_utc = starts_at.astimezone(ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M:%SZ")
+        payload = {
+            "case_id": case_id,
+            "name": settings["name"],
+            "email": settings["email"],
+            "phoneNumber": settings["phone"],
+            "phoneExtension": "45",
+            "note": "",
+            "communicationLanguage": "danish",
+            "startsAt": starts_at_utc,
+            "booking_time": "%s, kl. %s" % (day.isoformat(), slot_time),
+            "message": "Jeg vil gerne komme til en fremvisning den %s kl. %s."
+            % (day.isoformat(), slot_time),
+            "screeningAnswers": answers,
+            "website": "",
+        }
+        headers["Content-Type"] = "application/json"
+        response = client.post(
+            endpoint, json=payload, headers=headers, timeout=REQUEST_TIMEOUT
+        )
+        data = response.json()
+        if not response.ok or not data.get("ok"):
+            return False, data.get("message", "Kereby rejected the viewing request"), None
+        return (
+            True,
+            "requested for %s at %s" % (day.isoformat(), slot_time),
+            starts_at_utc,
+        )
+    except (requests.RequestException, ValueError, json.JSONDecodeError) as exc:
+        return False, "booking request failed: %s" % exc, None
+
+
+def preserve_booking_records(previous, current):
+    """Keep successful booking records when replacing the listing snapshot."""
+    for card_id, entry in current.items():
+        old = previous.get(card_id, {})
+        if "booking" in old:
+            entry["booking"] = old["booking"]
+
+
+def auto_book_viewings(candidates, settings):
+    """Request viewings for qualifying actionable flats once, and record success."""
+    results = []
+    if settings is None:
+        return results
+    for card_id, entry in candidates:
+        if not matches_booking_preferences(entry):
+            continue
+        booking = entry.get("booking", {})
+        if booking.get("status") == "requested":
+            continue
+        success, detail, starts_at = booking_request(entry, settings)
+        if success:
+            entry["booking"] = {
+                "status": "requested",
+                "requested_at": datetime.now(TIME_ZONE).isoformat(),
+                "starts_at": starts_at,
+            }
+            print("Viewing requested: %s (%s)" % (entry.get("address", "?"), detail))
+            results.append((entry, True, detail))
+        else:
+            print("Viewing not requested: %s (%s)" % (entry.get("address", "?"), detail))
+            results.append((entry, False, detail))
+    return results
+
+
+def build_email_body(new, reposted, truncation_note="", booking_results=None):
     sections = []
 
     if truncation_note:
@@ -198,6 +469,12 @@ def build_email_body(new, reposted, truncation_note=""):
         block = ["REPOSTED (reservation fell through)", "=" * 40]
         block.extend(format_flat(entry) for _, entry in reposted)
         sections.append("\n\n".join(block))
+
+    for entry, success, detail in booking_results or []:
+        label = "VIEWING REQUESTED" if success else "VIEWING NOT REQUESTED"
+        sections.append(
+            label + "\n" + "=" * 40 + "\n" + format_flat(entry) + "\n  " + detail
+        )
 
     sections.append("Source: " + URL)
     return "\n\n\n".join(sections) + "\n"
@@ -292,7 +569,9 @@ def main():
         )
         return 0
 
+    preserve_booking_records(previous, listings)
     new, reposted, just_reserved = diff_listings(previous, listings)
+    booking_results = auto_book_viewings(new + reposted, booking_settings_from_env())
 
     for _, entry in just_reserved:
         print(
@@ -306,7 +585,9 @@ def main():
     if new or reposted:
         count = len(new) + len(reposted)
         subject = "[kereby] %d flat(s) available" % count
-        send_email(subject, build_email_body(new, reposted, truncation_note))
+        send_email(
+            subject, build_email_body(new, reposted, truncation_note, booking_results)
+        )
     elif truncation_note:
         send_email(
             "[kereby] monitor may be missing listings",

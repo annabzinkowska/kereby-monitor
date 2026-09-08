@@ -178,3 +178,42 @@ being repaired.
 
 The target URL and state file name are module level constants at the top of
 `monitor.py`.
+
+## Automatic viewing requests
+
+The monitor can request a Kereby viewing as soon as it sees a new or reposted
+listing that matches all of these rules:
+
+- Area: Frederiksberg, København K, Nørrebro, Østerbro, or Vesterbro.
+- Monthly rent: at most 20,000 DKK, based on the rent shown on the listing.
+- Time: Kereby's earliest selectable weekday, which is at least two days away,
+  at the earliest offered time from 14:00 onward.
+
+This is a viewing request, not an instant flat reservation. A successful
+request is stored in `listings_state.json`, so the same flat is not requested
+again after the next scheduled run. The regular notification email says whether
+the request was sent or why it was skipped.
+
+### Enable it safely
+
+Add these GitHub Actions secrets. Do not put their values in `monitor.py`, the
+workflow file, or the repository.
+
+| Secret | Value | Purpose |
+| --- | --- | --- |
+| `AUTO_BOOK_VIEWINGS` | `1` | Enables the feature. |
+| `BOOKING_NAME` | Your full name | Sent to Kereby. |
+| `BOOKING_EMAIL` | Your email address | Sent to Kereby. |
+| `BOOKING_PHONE` | Your Danish phone number, with or without `+45` | Sent to Kereby. |
+| `BOOKING_PRIVACY_ACCEPTED` | `1` | Set only after you have read and accept [Kereby's privacy policy](https://kereby.dk/privatlivspolitik/). |
+| `BOOKING_CONFIRM_RKI_NOT_REGISTERED` | `1` | Set only if the statement is true for you. |
+| `BOOKING_CONFIRM_NO_PETS` | `1` | Set only if the statement is true for you. |
+
+Kereby currently asks applicants to confirm that they are not registered in RKI
+and that they have no pets. The monitor never guesses an answer. If either
+confirmation is absent, or Kereby adds another screening question, it will not
+submit the request and will include the reason in the notification email.
+
+The first run remains a silent baseline, so enabling this does not send viewing
+requests for every flat already on the page. It acts only on later new listings
+or flats that become available again.

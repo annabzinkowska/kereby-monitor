@@ -33,6 +33,13 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          AUTO_BOOK_VIEWINGS: ${{ secrets.AUTO_BOOK_VIEWINGS }}
+          BOOKING_NAME: ${{ secrets.BOOKING_NAME }}
+          BOOKING_EMAIL: ${{ secrets.BOOKING_EMAIL }}
+          BOOKING_PHONE: ${{ secrets.BOOKING_PHONE }}
+          BOOKING_PRIVACY_ACCEPTED: ${{ secrets.BOOKING_PRIVACY_ACCEPTED }}
+          BOOKING_CONFIRM_RKI_NOT_REGISTERED: ${{ secrets.BOOKING_CONFIRM_RKI_NOT_REGISTERED }}
+          BOOKING_CONFIRM_NO_PETS: ${{ secrets.BOOKING_CONFIRM_NO_PETS }}
         run: python monitor.py
 
       - name: Commit state if it changed
