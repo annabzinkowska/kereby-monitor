@@ -118,5 +118,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/herninggade-26-st-2100-kobenhavn/",
     "zip": "2100"
+  },
+  "27790": {
+    "address": "Frederiksborggade 35, 1. tv, 1360 København K",
+    "lat": "55.68542862",
+    "lng": "12.56663268",
+    "rent": "14419",
+    "req": "",
+    "rooms": "4",
+    "size": "86",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/frederiksborggade-35-1-tv-1360-kobenhavn-k/",
+    "zip": "1360"
   }
 }
