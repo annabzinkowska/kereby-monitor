@@ -208,11 +208,14 @@ workflow file, or the repository.
 | `BOOKING_PRIVACY_ACCEPTED` | `1` | Set only after you have read and accept [Kereby's privacy policy](https://kereby.dk/privatlivspolitik/). |
 | `BOOKING_CONFIRM_RKI_NOT_REGISTERED` | `1` | Set only if the statement is true for you. |
 | `BOOKING_CONFIRM_NO_PETS` | `1` | Set only if the statement is true for you. |
+| `BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE` | `1` | Set only if you can take over qualifying homes on the date Kereby specifies. |
 
-Kereby currently asks applicants to confirm that they are not registered in RKI
-and that they have no pets. The monitor never guesses an answer. If either
-confirmation is absent, or Kereby adds another screening question, it will not
-submit the request and will include the reason in the notification email.
+Kereby currently asks applicants to confirm that they are not registered in RKI,
+that they have no pets, and sometimes that they can take over on a specified
+date. The monitor never guesses an answer. If a confirmation is absent, or
+Kereby adds another screening question, it will not submit the request and will
+include the reason in the notification email. Case-specific values such as a
+takeover date are shown in the email.
 
 The first run remains a silent baseline, so enabling this does not send viewing
 requests for every flat already on the page. It acts only on later new listings

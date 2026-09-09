@@ -281,6 +281,8 @@ def booking_settings_from_env():
         confirmations["rki_not_present"] = True
     if os.environ.get("BOOKING_CONFIRM_NO_PETS") == "1":
         confirmations["no_pet"] = True
+    if os.environ.get("BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE") == "1":
+        confirmations["tenancy_takeover_by_date"] = True
 
     return {
         "name": os.environ["BOOKING_NAME"].strip(),
@@ -328,6 +330,27 @@ def first_booking_slot(time_slots, now=None):
     return day, slot_time
 
 
+def screening_question_text(row):
+    """Return a human-readable screening question, including its value."""
+    question = row.get("question", row) if isinstance(row, dict) else {}
+    if not isinstance(question, dict):
+        return "an unnamed screening question"
+
+    template = (
+        question.get("questionTemplateDanish")
+        or question.get("questionTemplateEnglish")
+        or question.get("id")
+        or "an unnamed screening question"
+    )
+    # The API keeps the template on the question definition and supplies its
+    # case-specific value alongside it.  Substitute it before including the
+    # question in an email, so a literal {Parameter} is never shown.
+    parameter = row.get("parameter", "") if isinstance(row, dict) else ""
+    if parameter:
+        return str(template).replace("{Parameter}", str(parameter))
+    return str(template)
+
+
 def screening_answers(questions, confirmations):
     """Build required true answers, or report questions the applicant must answer."""
     answers, missing = [], []
@@ -335,8 +358,7 @@ def screening_answers(questions, confirmations):
         question = row.get("question", row) if isinstance(row, dict) else {}
         question_id = question.get("id", "")
         if confirmations.get(question_id) is not True:
-            text = question.get("questionTemplateDanish") or question.get("questionTemplateEnglish")
-            missing.append(text or question_id or "an unnamed screening question")
+            missing.append(screening_question_text(row))
             continue
         answers.append({"questionId": question_id, "answer": True})
     return answers, missing

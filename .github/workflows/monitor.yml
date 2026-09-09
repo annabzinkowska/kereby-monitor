@@ -40,6 +40,7 @@ jobs:
           BOOKING_PRIVACY_ACCEPTED: ${{ secrets.BOOKING_PRIVACY_ACCEPTED }}
           BOOKING_CONFIRM_RKI_NOT_REGISTERED: ${{ secrets.BOOKING_CONFIRM_RKI_NOT_REGISTERED }}
           BOOKING_CONFIRM_NO_PETS: ${{ secrets.BOOKING_CONFIRM_NO_PETS }}
+          BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE: ${{ secrets.BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE }}
         run: python monitor.py
 
       - name: Commit state if it changed
