@@ -130,5 +130,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1360"
+  },
+  "27795": {
+    "address": "Vesterbrogade 13, 3. tv, 1620 København V",
+    "lat": "55.67314656",
+    "lng": "12.56044601",
+    "rent": "21800",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "109",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/vesterbrogade-13-3-tv-1620-kobenhavn-v/",
+    "zip": "1620"
   }
 }
