@@ -43,8 +43,8 @@
     "req": "Elevator",
     "rooms": "4",
     "size": "155",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/christian-ixs-gade-5-2-tv-1111-kobenhavn-k/",
+    "state": "reserved",
+    "url": "",
     "zip": "1111"
   },
   "27632": {
