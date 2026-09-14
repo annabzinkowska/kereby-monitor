@@ -43,7 +43,7 @@
     "req": "Elevator",
     "rooms": "4",
     "size": "155",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "1111"
   },
