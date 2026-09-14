@@ -142,5 +142,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1620"
+  },
+  "27852": {
+    "address": "Drogdensgade 4, 2. th, 2300 København S",
+    "lat": "55.65950481",
+    "lng": "12.60762426",
+    "rent": "9516",
+    "req": "",
+    "rooms": "3",
+    "size": "61",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/drogdensgade-4-2-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
