@@ -154,5 +154,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
+  },
+  "27862": {
+    "address": "Amagerbrogade 111, 1. tv, 2300 København S",
+    "lat": "55.65829646",
+    "lng": "12.60782617",
+    "rent": "13536",
+    "req": "Delevenlig",
+    "rooms": "3",
+    "size": "83",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/amagerbrogade-111-1-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
