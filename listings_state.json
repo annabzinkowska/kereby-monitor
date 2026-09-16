@@ -166,5 +166,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1114"
+  },
+  "27905": {
+    "address": "Fælledvej 23, 3. tv, 2200 København N",
+    "lat": "55.68998385",
+    "lng": "12.56032597",
+    "rent": "18380",
+    "req": "",
+    "rooms": "4",
+    "size": "111",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/falledvej-23-3-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
