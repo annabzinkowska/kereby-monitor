@@ -190,5 +190,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/norrebrogade-156-st-tv-2200-kobenhavn-n/",
     "zip": "2200"
+  },
+  "27941": {
+    "address": "Amagerbrogade 109, 1. tv, 2300 København S",
+    "lat": "55.65842963",
+    "lng": "12.60767349",
+    "rent": "17983",
+    "req": "",
+    "rooms": "3",
+    "size": "83",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/amagerbrogade-109-1-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
