@@ -202,5 +202,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "27958": {
+    "address": "Godthåbsvej 8A, 2., 2000 Frederiksberg",
+    "lat": "55.68569064",
+    "lng": "12.53749867",
+    "rent": "22701",
+    "req": "Delevenlig",
+    "rooms": "5",
+    "size": "141",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/godthabsvej-8a-2-2000-frederiksberg/",
+    "zip": "2000"
   }
 }
