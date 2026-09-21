@@ -211,8 +211,8 @@
     "req": "Delevenlig",
     "rooms": "5",
     "size": "141",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/godthabsvej-8a-2-2000-frederiksberg/",
+    "state": "reserved",
+    "url": "",
     "zip": "2000"
   }
 }
