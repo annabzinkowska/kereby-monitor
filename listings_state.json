@@ -214,5 +214,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2000"
+  },
+  "27972": {
+    "address": "Jagtvej 113, 2., 2200 København N",
+    "lat": "55.69648991",
+    "lng": "12.55097749",
+    "rent": "41279",
+    "req": "",
+    "rooms": "7",
+    "size": "246",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/jagtvej-113-2-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
