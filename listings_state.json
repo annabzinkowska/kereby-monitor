@@ -202,5 +202,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/jagtvej-113-2-2200-kobenhavn-n/",
     "zip": "2200"
+  },
+  "27982": {
+    "address": "Mølle Allé 21, 4. tv, 2500 Valby",
+    "lat": "55.66530855",
+    "lng": "12.51639035",
+    "rent": "13432",
+    "req": "",
+    "rooms": "3",
+    "size": "83",
+    "state": "reserved",
+    "url": "",
+    "zip": "2500"
   }
 }
