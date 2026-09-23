@@ -214,5 +214,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2500"
+  },
+  "27986": {
+    "address": "Bjelkes Allé 18, st. th, 2200 København N",
+    "lat": "55.69289439",
+    "lng": "12.54501613",
+    "rent": "7950",
+    "req": "",
+    "rooms": "2",
+    "size": "49",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/bjelkes-alle-18-st-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
