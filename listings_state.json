@@ -226,5 +226,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "27999": {
+    "address": "Brohusgade 20, 3. tv, 2200 København N",
+    "lat": "55.68561372",
+    "lng": "12.54712512",
+    "rent": "9376",
+    "req": "",
+    "rooms": "2",
+    "size": "59",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/brohusgade-20-3-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
