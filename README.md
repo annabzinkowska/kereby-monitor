@@ -187,7 +187,7 @@ listing that matches all of these rules:
 - Area: Frederiksberg, København K, Nørrebro, Østerbro, or Vesterbro.
 - Monthly rent: at most 20,000 DKK, based on the rent shown on the listing.
 - Time: Kereby's earliest selectable weekday, which is at least two days away,
-  at the earliest offered time from 14:00 onward.
+  at the earliest offered time.
 
 This is a viewing request, not an instant flat reservation. A successful
 request is stored in `listings_state.json`, so the same flat is not requested
@@ -206,16 +206,17 @@ workflow file, or the repository.
 | `BOOKING_EMAIL` | Your email address | Sent to Kereby. |
 | `BOOKING_PHONE` | Your Danish phone number, with or without `+45` | Sent to Kereby. |
 | `BOOKING_PRIVACY_ACCEPTED` | `1` | Set only after you have read and accept [Kereby's privacy policy](https://kereby.dk/privatlivspolitik/). |
-| `BOOKING_CONFIRM_RKI_NOT_REGISTERED` | `1` | Set only if the statement is true for you. |
-| `BOOKING_CONFIRM_NO_PETS` | `1` | Set only if the statement is true for you. |
-| `BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE` | `1` | Set only if you can take over qualifying homes on the date Kereby specifies. |
 
-Kereby currently asks applicants to confirm that they are not registered in RKI,
-that they have no pets, and sometimes that they can take over on a specified
-date. The monitor never guesses an answer. If a confirmation is absent, or
-Kereby adds another screening question, it will not submit the request and will
-include the reason in the notification email. Case-specific values such as a
-takeover date are shown in the email.
+Kereby only accepts a viewing request when every screening question is
+confirmed, so the monitor answers yes to all of them. That currently means
+confirming that you are not registered in RKI, that you have no pets, and, for
+some flats, that you can take over on the date Kereby specifies. Questions
+Kereby adds later are confirmed too. The notification email lists every
+statement that was confirmed, including any move-in date.
+
+If a request fails, for example because the site was briefly unavailable, it is
+retried on later runs while the flat is still available, up to five attempts.
+You get an email if a retry succeeds.
 
 The first run remains a silent baseline, so enabling this does not send viewing
 requests for every flat already on the page. It acts only on later new listings

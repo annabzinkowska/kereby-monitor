@@ -28,6 +28,9 @@ STATE_FILE = Path(__file__).resolve().parent / "listings_state.json"
 REQUEST_TIMEOUT = 30
 USER_AGENT = "Mozilla/5.0 (compatible; kereby-monitor/1.0)"
 TIME_ZONE = ZoneInfo("Europe/Copenhagen")
+# A failed viewing request is retried on later runs while the flat is still
+# available, up to this many attempts in total.
+MAX_BOOKING_ATTEMPTS = 5
 
 # Requested search area and monthly-rent ceiling. The postal-code
 # mapping deliberately excludes adjacent areas such as Sydhavn, Valby and
@@ -252,8 +255,10 @@ def booking_settings_from_env():
     """Read opt-in viewing-request settings without ever storing PII in git.
 
     The automation is deliberately disabled unless every required value is
-    present. In particular, the privacy acceptance and screening confirmations
-    must be set by the applicant, rather than assumed by this program.
+    present. In particular, the privacy acceptance must be set by the
+    applicant, rather than assumed by this program. Enabling the automation
+    means every screening question is confirmed, since Kereby will not accept
+    a viewing request otherwise.
     """
     if os.environ.get("AUTO_BOOK_VIEWINGS") != "1":
         return None
@@ -276,19 +281,10 @@ def booking_settings_from_env():
         print("Automatic booking disabled: BOOKING_PHONE must be a Danish phone number.")
         return None
 
-    confirmations = {}
-    if os.environ.get("BOOKING_CONFIRM_RKI_NOT_REGISTERED") == "1":
-        confirmations["rki_not_present"] = True
-    if os.environ.get("BOOKING_CONFIRM_NO_PETS") == "1":
-        confirmations["no_pet"] = True
-    if os.environ.get("BOOKING_CONFIRM_TENANCY_TAKEOVER_BY_DATE") == "1":
-        confirmations["tenancy_takeover_by_date"] = True
-
     return {
         "name": os.environ["BOOKING_NAME"].strip(),
         "email": os.environ["BOOKING_EMAIL"].strip(),
         "phone": phone,
-        "screening_confirmations": confirmations,
     }
 
 
@@ -310,17 +306,16 @@ def extract_booking_config(html):
 
 
 def first_booking_slot(time_slots, now=None):
-    """Mirror Kereby's calendar: first weekday at least two days away, after 14:00."""
+    """Mirror Kereby's calendar: first weekday at least two days away, earliest time."""
     allowed_times = []
     for value in time_slots:
         try:
             parsed = time.fromisoformat(str(value))
         except ValueError:
             continue
-        if parsed >= time(14, 0):
-            allowed_times.append((parsed, str(value)))
+        allowed_times.append((parsed, str(value)))
     if not allowed_times:
-        raise ValueError("Kereby offered no viewing time at or after 14:00")
+        raise ValueError("Kereby offered no viewing time")
 
     local_now = now or datetime.now(TIME_ZONE)
     day = local_now.date() + timedelta(days=2)
@@ -351,17 +346,27 @@ def screening_question_text(row):
     return str(template)
 
 
-def screening_answers(questions, confirmations):
-    """Build required true answers, or report questions the applicant must answer."""
-    answers, missing = [], []
+def screening_answers(questions):
+    """Confirm every screening question, and return the answers and their text.
+
+    Kereby's modal refuses to submit unless every question is ticked, so
+    answering anything else would only lose the viewing. The texts are kept so
+    the email shows exactly what was confirmed, such as a move-in date.
+    """
+    answers, confirmed = [], []
     for row in questions:
-        question = row.get("question", row) if isinstance(row, dict) else {}
-        question_id = question.get("id", "")
-        if confirmations.get(question_id) is not True:
-            missing.append(screening_question_text(row))
+        if not isinstance(row, dict):
             continue
+        question = row.get("question")
+        if not isinstance(question, dict):
+            question = row
+        # Same id preference as Kereby's own modal.
+        question_id = question.get("id") or row.get("id") or ""
+        if not question_id:
+            raise ValueError("Kereby sent a screening question without an id")
         answers.append({"questionId": question_id, "answer": True})
-    return answers, missing
+        confirmed.append(screening_question_text(row))
+    return answers, confirmed
 
 
 def booking_request(entry, settings, session=None, now=None):
@@ -369,7 +374,7 @@ def booking_request(entry, settings, session=None, now=None):
 
     The site's public modal uses this same WordPress endpoint. A fresh detail
     page is fetched each time so the short-lived nonce and case id are current.
-    Unknown screening questions are never guessed or submitted.
+    Every screening question is confirmed, including new ones Kereby adds.
     """
     if not entry.get("url"):
         return False, "listing has no detail-page URL", None
@@ -404,9 +409,7 @@ def booking_request(entry, settings, session=None, now=None):
             if not isinstance(questions, list):
                 return False, "could not read the required screening questions", None
 
-        answers, missing = screening_answers(questions, settings["screening_confirmations"])
-        if missing:
-            return False, "needs your confirmation: " + " | ".join(missing), None
+        answers, confirmed = screening_answers(questions)
 
         day, slot_time = first_booking_slot(config.get("timeSlots") or [], now=now)
         starts_at = datetime.combine(day, time.fromisoformat(slot_time), TIME_ZONE)
@@ -433,11 +436,10 @@ def booking_request(entry, settings, session=None, now=None):
         data = response.json()
         if not response.ok or not data.get("ok"):
             return False, data.get("message", "Kereby rejected the viewing request"), None
-        return (
-            True,
-            "requested for %s at %s" % (day.isoformat(), slot_time),
-            starts_at_utc,
-        )
+        detail = "requested for %s at %s" % (day.isoformat(), slot_time)
+        if confirmed:
+            detail += "\n  confirmed: " + "\n             ".join(confirmed)
+        return True, detail, starts_at_utc
     except (requests.RequestException, ValueError, json.JSONDecodeError) as exc:
         return False, "booking request failed: %s" % exc, None
 
@@ -450,8 +452,23 @@ def preserve_booking_records(previous, current):
             entry["booking"] = old["booking"]
 
 
+def booking_retries(listings, exclude=()):
+    """Return available flats whose earlier viewing request failed."""
+    retries = []
+    for card_id, entry in listings.items():
+        booking = entry.get("booking", {})
+        if (
+            card_id not in exclude
+            and entry.get("state") == "available"
+            and booking.get("status") == "failed"
+            and booking.get("attempts", 0) < MAX_BOOKING_ATTEMPTS
+        ):
+            retries.append((card_id, entry))
+    return retries
+
+
 def auto_book_viewings(candidates, settings):
-    """Request viewings for qualifying actionable flats once, and record success."""
+    """Request viewings for qualifying actionable flats once, and record the outcome."""
     results = []
     if settings is None:
         return results
@@ -462,15 +479,22 @@ def auto_book_viewings(candidates, settings):
         if booking.get("status") == "requested":
             continue
         success, detail, starts_at = booking_request(entry, settings)
+        now = datetime.now(TIME_ZONE).isoformat()
         if success:
             entry["booking"] = {
                 "status": "requested",
-                "requested_at": datetime.now(TIME_ZONE).isoformat(),
+                "requested_at": now,
                 "starts_at": starts_at,
             }
             print("Viewing requested: %s (%s)" % (entry.get("address", "?"), detail))
             results.append((entry, True, detail))
         else:
+            entry["booking"] = {
+                "status": "failed",
+                "attempts": booking.get("attempts", 0) + 1,
+                "last_attempt_at": now,
+                "last_error": detail,
+            }
             print("Viewing not requested: %s (%s)" % (entry.get("address", "?"), detail))
             results.append((entry, False, detail))
     return results
@@ -593,7 +617,12 @@ def main():
 
     preserve_booking_records(previous, listings)
     new, reposted, just_reserved = diff_listings(previous, listings)
-    booking_results = auto_book_viewings(new + reposted, booking_settings_from_env())
+    settings = booking_settings_from_env()
+    booking_results = auto_book_viewings(new + reposted, settings)
+    # Earlier failures are retried silently; only a success is worth an email.
+    fresh_ids = {card_id for card_id, _ in new + reposted}
+    retry_results = auto_book_viewings(booking_retries(listings, fresh_ids), settings)
+    booking_results += [result for result in retry_results if result[1]]
 
     for _, entry in just_reserved:
         print(
@@ -609,6 +638,11 @@ def main():
         subject = "[kereby] %d flat(s) available" % count
         send_email(
             subject, build_email_body(new, reposted, truncation_note, booking_results)
+        )
+    elif booking_results:
+        send_email(
+            "[kereby] viewing requested on retry",
+            build_email_body([], [], truncation_note, booking_results),
         )
     elif truncation_note:
         send_email(
