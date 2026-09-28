@@ -238,5 +238,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28047": {
+    "address": "Fredensgade 3B, 3. th, 2200 København N",
+    "booking": {
+      "requested_at": "2026-09-28T13:50:38.408322+02:00",
+      "starts_at": "2026-09-30T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.69196504",
+    "lng": "12.56831285",
+    "rent": "17047",
+    "req": "",
+    "rooms": "4",
+    "size": "104",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/fredensgade-3b-3-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
