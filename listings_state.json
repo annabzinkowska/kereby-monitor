@@ -127,7 +127,7 @@
     "req": "Delevenlig",
     "rooms": "3",
     "size": "83",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2300"
   },
@@ -139,7 +139,7 @@
     "req": "Delevenlig",
     "rooms": "4",
     "size": "135",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "1114"
   },
@@ -151,7 +151,7 @@
     "req": "",
     "rooms": "4",
     "size": "111",
-    "state": "reserved",
+    "state": "completed",
     "url": "",
     "zip": "2200"
   },
