@@ -267,5 +267,22 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/jagtvej-183-1-tv-2100-kobenhavn/",
     "zip": "2100"
+  },
+  "28072": {
+    "address": "Heimdalsgade 8, 2. th, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-01T11:44:22.464443+02:00",
+      "starts_at": "2026-10-05T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.69999732",
+    "lng": "12.54153791",
+    "rent": "8254",
+    "req": "",
+    "rooms": "2",
+    "size": "51",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/heimdalsgade-8-2-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
