@@ -255,5 +255,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28057": {
+    "address": "Jagtvej 183, 1. tv, 2100 København Ø",
+    "lat": "55.70721976",
+    "lng": "12.5661535",
+    "rent": "26227",
+    "req": "",
+    "rooms": "5",
+    "size": "160",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/jagtvej-183-1-tv-2100-kobenhavn/",
+    "zip": "2100"
   }
 }
