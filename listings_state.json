@@ -296,5 +296,22 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/gersonsvej-55-st-th-2900-hellerup/",
     "zip": "2900"
+  },
+  "28085": {
+    "address": "Helgolandsgade 2, 5. th, 1653 København V",
+    "booking": {
+      "requested_at": "2026-10-05T15:27:23.767240+02:00",
+      "starts_at": "2026-10-07T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.67285771",
+    "lng": "12.56065793",
+    "rent": "16683",
+    "req": "Altan",
+    "rooms": "3",
+    "size": "91",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/helgolandsgade-2-5-th-1653-kobenhavn-v/",
+    "zip": "1653"
   }
 }
