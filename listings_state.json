@@ -313,5 +313,22 @@
     "state": "reserved",
     "url": "",
     "zip": "1653"
+  },
+  "28099": {
+    "address": "Gothersgade 10C, 2. th, 1123 København K",
+    "booking": {
+      "requested_at": "2026-10-07T13:18:21.327010+02:00",
+      "starts_at": "2026-10-09T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.68200227",
+    "lng": "12.58464263",
+    "rent": "18472",
+    "req": "",
+    "rooms": "4",
+    "size": "111",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/gothersgade-10c-2-th-1123-kobenhavn-k/",
+    "zip": "1123"
   }
 }
