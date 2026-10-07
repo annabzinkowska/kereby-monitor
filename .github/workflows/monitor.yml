@@ -38,6 +38,8 @@ jobs:
           BOOKING_EMAIL: ${{ secrets.BOOKING_EMAIL }}
           BOOKING_PHONE: ${{ secrets.BOOKING_PHONE }}
           BOOKING_PRIVACY_ACCEPTED: ${{ secrets.BOOKING_PRIVACY_ACCEPTED }}
+          POLL_WINDOW: "50"
+          POLL_INTERVAL: "10"
         run: python monitor.py
 
       - name: Commit state if it changed

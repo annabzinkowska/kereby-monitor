@@ -15,6 +15,7 @@ import os
 import re
 import smtplib
 import sys
+import time as time_module
 from datetime import datetime, time, timedelta
 from email.message import EmailMessage
 from pathlib import Path
@@ -573,7 +574,7 @@ def run_debug(listings):
     print("\nDEBUG mode: no diff, no email, no state written.")
 
 
-def main():
+def run_once(first_pass=True):
     try:
         html = fetch_html()
     except requests.RequestException as exc:
@@ -644,7 +645,7 @@ def main():
             "[kereby] viewing requested on retry",
             build_email_body([], [], truncation_note, booking_results),
         )
-    elif truncation_note:
+    elif truncation_note and first_pass:
         send_email(
             "[kereby] monitor may be missing listings",
             "WARNING: " + truncation_note + "\n\nSource: " + URL + "\n",
@@ -654,6 +655,33 @@ def main():
 
     save_state(listings)
     return 0
+
+
+def main():
+    """Poll repeatedly for POLL_WINDOW seconds, then exit.
+
+    The external scheduler triggers a run every minute; polling inside the run
+    gives a much shorter effective check interval. Without POLL_WINDOW (or in
+    debug mode) a single pass is made.
+    """
+    window = float(os.environ.get("POLL_WINDOW", "0") or 0)
+    interval = float(os.environ.get("POLL_INTERVAL", "15") or 15)
+    if os.environ.get("DEBUG") == "1" or window <= 0:
+        return run_once()
+
+    deadline = time_module.monotonic() + window
+    first_pass = True
+    succeeded = False
+    while True:
+        try:
+            succeeded = run_once(first_pass) == 0 or succeeded
+        except Exception as exc:  # keep polling through one-off failures
+            print("Error during poll: %s" % exc)
+        first_pass = False
+        if time_module.monotonic() + interval >= deadline:
+            break
+        time_module.sleep(interval)
+    return 0 if succeeded else 1
 
 
 if __name__ == "__main__":

@@ -123,7 +123,8 @@ You should get exactly one repost email, and no duplicate on the run after.
 
 GitHub's native cron scheduler can delay or drop runs, so the reliable schedule
 uses [cron-job.org](https://cron-job.org/) to call the workflow dispatch API
-every 5 minutes. The workflow intentionally exposes only its
+every minute. Each run then polls Kereby every `POLL_INTERVAL` seconds (10) for
+`POLL_WINDOW` seconds (50), so listings are checked roughly every 10 seconds. The workflow intentionally exposes only its
 `workflow_dispatch` trigger; scheduling is managed by cron-job.org.
 
 ### Configure cron-job.org
@@ -134,7 +135,7 @@ every 5 minutes. The workflow intentionally exposes only its
    `kereby-monitor`, and give it **Actions: Read and write** permission.
 3. Give the token an expiration date and add a reminder to replace it before it
    expires. Do not commit the token or add it to this repository.
-4. Create a cron-job.org job that runs every 5 minutes with these settings:
+4. Create a cron-job.org job that runs every 1 minute with these settings:
 
 | Setting | Value |
 | --- | --- |
