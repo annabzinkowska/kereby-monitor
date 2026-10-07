@@ -330,5 +330,22 @@
     "state": "reserved",
     "url": "",
     "zip": "1123"
+  },
+  "28104": {
+    "address": "Rantzausgade 32, 5. tv, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-07T14:40:09.284848+02:00",
+      "starts_at": "2026-10-09T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.68665105",
+    "lng": "12.54957526",
+    "rent": "13510",
+    "req": "",
+    "rooms": "3",
+    "size": "82",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/rantzausgade-32-5-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
