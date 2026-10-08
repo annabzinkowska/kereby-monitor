@@ -347,5 +347,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28119": {
+    "address": "Nørrebrogade 176, 2. tv, 2200 København N",
+    "lat": "55.69674102",
+    "lng": "12.54553901",
+    "rent": "23678",
+    "req": "",
+    "rooms": "5",
+    "size": "143",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/norrebrogade-176-2-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
