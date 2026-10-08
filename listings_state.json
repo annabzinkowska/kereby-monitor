@@ -23,18 +23,6 @@
     "url": "https://kereby.dk/bolig/strandboulevarden-61-5-th-2100-kobenhavn/",
     "zip": "2100"
   },
-  "27485": {
-    "address": "Stormgade 35, 4. th, 1555 København V",
-    "lat": "55.67400222",
-    "lng": "12.57283204",
-    "rent": "32209",
-    "req": "Altan",
-    "rooms": "7",
-    "size": "203",
-    "state": "completed",
-    "url": "",
-    "zip": "1555"
-  },
   "27602": {
     "address": "Christian IX's Gade 5, 2. tv, 1111 København K",
     "lat": "55.68217824",
