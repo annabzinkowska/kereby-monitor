@@ -137,7 +137,7 @@
   "28124": {
     "address": "Lille Fredensgade 6, 1., 2200 København N",
     "booking": {
-      "requested_at": "2026-10-09T12:19:11.185929+02:00",
+      "requested_at": "2026-10-09T12:19:30.280391+02:00",
       "starts_at": "2026-10-12T08:00:00Z",
       "status": "requested"
     },
@@ -147,8 +147,8 @@
     "req": "",
     "rooms": "4",
     "size": "82",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/lille-fredensgade-6-1-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
