@@ -127,7 +127,7 @@
     "lat": "55.69674102",
     "lng": "12.54553901",
     "rent": "23678",
-    "req": "",
+    "req": "Elevator",
     "rooms": "5",
     "size": "143",
     "state": "reserved",
