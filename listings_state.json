@@ -47,23 +47,6 @@
     "url": "",
     "zip": "2200"
   },
-  "28047": {
-    "address": "Fredensgade 3B, 3. th, 2200 København N",
-    "booking": {
-      "requested_at": "2026-09-28T13:50:38.408322+02:00",
-      "starts_at": "2026-09-30T08:00:00Z",
-      "status": "requested"
-    },
-    "lat": "55.69196504",
-    "lng": "12.56831285",
-    "rent": "17047",
-    "req": "",
-    "rooms": "4",
-    "size": "104",
-    "state": "reserved",
-    "url": "",
-    "zip": "2200"
-  },
   "28057": {
     "address": "Jagtvej 183, 1. tv, 2100 København Ø",
     "lat": "55.70721976",
@@ -75,23 +58,6 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
-  },
-  "28072": {
-    "address": "Heimdalsgade 8, 2. th, 2200 København N",
-    "booking": {
-      "requested_at": "2026-10-01T11:44:22.464443+02:00",
-      "starts_at": "2026-10-05T08:00:00Z",
-      "status": "requested"
-    },
-    "lat": "55.69999732",
-    "lng": "12.54153791",
-    "rent": "8254",
-    "req": "",
-    "rooms": "2",
-    "size": "51",
-    "state": "reserved",
-    "url": "",
-    "zip": "2200"
   },
   "28080": {
     "address": "Gersonsvej 55, st. th, 2900 Hellerup",
