@@ -431,10 +431,15 @@ def booking_request(entry, settings, session=None, now=None):
             "website": "",
         }
         headers["Content-Type"] = "application/json"
-        response = client.post(
-            endpoint, json=payload, headers=headers, timeout=REQUEST_TIMEOUT
-        )
-        data = response.json()
+        try:
+            response = client.post(
+                endpoint, json=payload, headers=headers, timeout=REQUEST_TIMEOUT
+            )
+            data = response.json()
+        except (requests.RequestException, ValueError) as exc:
+            # The request may have reached Kereby even though we got no usable
+            # answer. Returning None (not False) stops any automatic resend.
+            return None, "no confirmation from Kereby (%s); check manually" % exc, None
         if not response.ok or not data.get("ok"):
             return False, data.get("message", "Kereby rejected the viewing request"), None
         detail = "requested for %s at %s" % (day.isoformat(), slot_time)
@@ -468,7 +473,7 @@ def booking_retries(listings, exclude=()):
     return retries
 
 
-def auto_book_viewings(candidates, settings):
+def auto_book_viewings(candidates, settings, save=None):
     """Request viewings for qualifying actionable flats once, and record the outcome."""
     results = []
     if settings is None:
@@ -477,11 +482,19 @@ def auto_book_viewings(candidates, settings):
         if not matches_booking_preferences(entry):
             continue
         booking = entry.get("booking", {})
-        if booking.get("status") == "requested":
+        if booking.get("status") in ("requested", "unconfirmed"):
             continue
         success, detail, starts_at = booking_request(entry, settings)
         now = datetime.now(TIME_ZONE).isoformat()
-        if success:
+        if success is None:
+            entry["booking"] = {
+                "status": "unconfirmed",
+                "last_attempt_at": now,
+                "last_error": detail,
+            }
+            print("Viewing unconfirmed: %s (%s)" % (entry.get("address", "?"), detail))
+            results.append((entry, False, detail))
+        elif success:
             entry["booking"] = {
                 "status": "requested",
                 "requested_at": now,
@@ -498,6 +511,9 @@ def auto_book_viewings(candidates, settings):
             }
             print("Viewing not requested: %s (%s)" % (entry.get("address", "?"), detail))
             results.append((entry, False, detail))
+        # Record each attempt immediately so a crash can never lose it.
+        if save:
+            save()
     return results
 
 
@@ -574,6 +590,27 @@ def run_debug(listings):
     print("\nDEBUG mode: no diff, no email, no state written.")
 
 
+def notify(new, reposted, truncation_note, booking_results, tracked, first_pass):
+    if new or reposted:
+        count = len(new) + len(reposted)
+        subject = "[kereby] %d flat(s) available" % count
+        send_email(
+            subject, build_email_body(new, reposted, truncation_note, booking_results)
+        )
+    elif booking_results:
+        send_email(
+            "[kereby] viewing requested on retry",
+            build_email_body([], [], truncation_note, booking_results),
+        )
+    elif truncation_note and first_pass:
+        send_email(
+            "[kereby] monitor may be missing listings",
+            "WARNING: " + truncation_note + "\n\nSource: " + URL + "\n",
+        )
+    else:
+        print("No new or reposted flats. Tracking %d listing(s)." % tracked)
+
+
 def run_once(first_pass=True):
     try:
         html = fetch_html()
@@ -619,10 +656,13 @@ def run_once(first_pass=True):
     preserve_booking_records(previous, listings)
     new, reposted, just_reserved = diff_listings(previous, listings)
     settings = booking_settings_from_env()
-    booking_results = auto_book_viewings(new + reposted, settings)
+    save = lambda: save_state(listings)
+    booking_results = auto_book_viewings(new + reposted, settings, save)
     # Earlier failures are retried silently; only a success is worth an email.
     fresh_ids = {card_id for card_id, _ in new + reposted}
-    retry_results = auto_book_viewings(booking_retries(listings, fresh_ids), settings)
+    retry_results = auto_book_viewings(
+        booking_retries(listings, fresh_ids), settings, save
+    )
     booking_results += [result for result in retry_results if result[1]]
 
     for _, entry in just_reserved:
@@ -634,26 +674,16 @@ def run_once(first_pass=True):
             )
         )
 
-    if new or reposted:
-        count = len(new) + len(reposted)
-        subject = "[kereby] %d flat(s) available" % count
-        send_email(
-            subject, build_email_body(new, reposted, truncation_note, booking_results)
-        )
-    elif booking_results:
-        send_email(
-            "[kereby] viewing requested on retry",
-            build_email_body([], [], truncation_note, booking_results),
-        )
-    elif truncation_note and first_pass:
-        send_email(
-            "[kereby] monitor may be missing listings",
-            "WARNING: " + truncation_note + "\n\nSource: " + URL + "\n",
-        )
-    else:
-        print("No new or reposted flats. Tracking %d listing(s)." % len(listings))
-
+    # Persist before notifying. Bookings are already made at this point, so if
+    # the email fails the next poll must not see these flats as new again and
+    # book and email a second time.
     save_state(listings)
+
+    try:
+        notify(new, reposted, truncation_note, booking_results, len(listings), first_pass)
+    except Exception as exc:  # state is saved, so a failed email must not repeat bookings
+        print("Error: could not send email (%s)" % exc)
+
     return 0
 
 

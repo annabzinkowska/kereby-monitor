@@ -43,6 +43,7 @@ jobs:
         run: python monitor.py
 
       - name: Commit state if it changed
+        if: always()
         run: |
           if [ -z "$(git status --porcelain listings_state.json)" ]; then
             echo "State unchanged, nothing to commit."
