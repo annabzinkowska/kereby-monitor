@@ -133,5 +133,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1879"
+  },
+  "28142": {
+    "address": "Gersonsvej 55, st. th, 2900 Hellerup",
+    "lat": "55.73760886",
+    "lng": "12.56598684",
+    "rent": "15656",
+    "req": "Altan",
+    "rooms": "3",
+    "size": "96",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/gersonsvej-55-st-th-2900-hellerup/",
+    "zip": "2900"
   }
 }
