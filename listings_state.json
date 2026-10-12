@@ -121,5 +121,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28130": {
+    "address": "H.C. Ørsteds Vej 12, 2. tv, 1879 Frederiksberg C",
+    "lat": "55.67678644",
+    "lng": "12.54632152",
+    "rent": "29505",
+    "req": "",
+    "rooms": "6",
+    "size": "180",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/hc-rsteds-vej-12-2-tv-1879-frederiksberg-c/",
+    "zip": "1879"
   }
 }
