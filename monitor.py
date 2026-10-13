@@ -456,6 +456,32 @@ def preserve_booking_records(previous, current):
         old = previous.get(card_id, {})
         if "booking" in old:
             entry["booking"] = old["booking"]
+    # A flat can drop off the page (the widget caps rendered cards) and come
+    # back later as "new". Keep its record so it is not booked a second time.
+    for card_id, old in previous.items():
+        if card_id not in current and "booking" in old:
+            current[card_id] = old
+
+
+def merge_remote_bookings(ours_path, theirs_path):
+    """Copy booking records from another copy of the state into ours.
+
+    Used by the workflow when the push is rejected: origin may hold a booking
+    that a concurrent run made, and overwriting it would let the next run book
+    the same flat again.
+    """
+    ours = json.loads(Path(ours_path).read_text(encoding="utf-8"))
+    theirs = json.loads(Path(theirs_path).read_text(encoding="utf-8"))
+    for card_id, entry in ours.items():
+        remote = theirs.get(card_id, {}).get("booking")
+        local = entry.get("booking")
+        if remote and (not local or remote.get("status") == "requested"):
+            entry["booking"] = remote
+    for card_id, remote_entry in theirs.items():
+        # A card that fell off our page may still carry a booking worth keeping.
+        if card_id not in ours and "booking" in remote_entry:
+            ours[card_id] = remote_entry
+    save_state(ours, Path(ours_path))
 
 
 def booking_retries(listings, exclude=()):
@@ -715,4 +741,7 @@ def main():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 4 and sys.argv[1] == "--merge-bookings":
+        merge_remote_bookings(sys.argv[2], sys.argv[3])
+        sys.exit(0)
     sys.exit(main())

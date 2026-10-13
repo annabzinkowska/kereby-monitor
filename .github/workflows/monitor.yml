@@ -17,6 +17,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          # A queued dispatch otherwise checks out the commit that existed when
+          # it was queued, so it misses bookings the previous run just pushed
+          # and books the same flat again.
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -66,6 +71,9 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp "$RUNNER_TEMP/state.json" listings_state.json
+            # Keep booking records origin already has so they are not lost.
+            git show origin/main:listings_state.json > "$RUNNER_TEMP/theirs.json"
+            python monitor.py --merge-bookings listings_state.json "$RUNNER_TEMP/theirs.json"
             if [ -z "$(git status --porcelain listings_state.json)" ]; then
               echo "Origin already has this state. Nothing to push."
               exit 0
