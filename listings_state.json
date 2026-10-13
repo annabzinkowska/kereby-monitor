@@ -135,8 +135,8 @@
     "req": "Elevator",
     "rooms": "3",
     "size": "95",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/allersgade-1-2-tv-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
