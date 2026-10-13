@@ -121,5 +121,22 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/gersonsvej-55-st-th-2900-hellerup/",
     "zip": "2900"
+  },
+  "28170": {
+    "address": "Allersgade 1, 2. tv, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-13T10:35:04.099553+02:00",
+      "starts_at": "2026-10-15T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.69655616",
+    "lng": "12.54590578",
+    "rent": "15279",
+    "req": "Elevator",
+    "rooms": "3",
+    "size": "95",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/allersgade-1-2-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
