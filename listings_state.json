@@ -150,5 +150,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28189": {
+    "address": "Helgolandsgade 2, 5. th, 1653 København V",
+    "booking": {
+      "requested_at": "2026-10-14T10:53:30.245353+02:00",
+      "starts_at": "2026-10-16T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.67285771",
+    "lng": "12.56065793",
+    "rent": "16683",
+    "req": "Altan",
+    "rooms": "3",
+    "size": "91",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/helgolandsgade-2-5-th-1653-kobenhavn-v/",
+    "zip": "1653"
   }
 }
