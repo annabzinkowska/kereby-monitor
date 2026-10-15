@@ -200,8 +200,8 @@
     "req": "Delevenlig",
     "rooms": "3",
     "size": "93",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/tyrolsgade-9-1-tv-2300-kobenhavn-s/",
+    "state": "reserved",
+    "url": "",
     "zip": "2300"
   }
 }
