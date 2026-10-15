@@ -191,5 +191,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/lyongade-14-5-tv-2300-kobenhavn-s/",
     "zip": "2300"
+  },
+  "28231": {
+    "address": "Tyrolsgade 9, 1. tv, 2300 København S",
+    "lat": "55.65924991",
+    "lng": "12.60829237",
+    "rent": "14934",
+    "req": "Delevenlig",
+    "rooms": "3",
+    "size": "93",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/tyrolsgade-9-1-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
