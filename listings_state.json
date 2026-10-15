@@ -179,5 +179,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/jagtvej-183-1-tv-2100-kobenhavn/",
     "zip": "2100"
+  },
+  "28218": {
+    "address": "Lyongade 14, 5. tv, 2300 København S",
+    "lat": "55.65979587",
+    "lng": "12.60805221",
+    "rent": "27225",
+    "req": "Altan",
+    "rooms": "5",
+    "size": "121",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/lyongade-14-5-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
