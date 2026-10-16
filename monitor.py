@@ -463,6 +463,20 @@ def preserve_booking_records(previous, current):
             current[card_id] = old
 
 
+def release_unconfirmed_bookings(reposted):
+    """Let a reposted flat be booked again unless the viewing is confirmed.
+
+    A request only means Kereby received it; Kereby may never pick us. When
+    the flat is reposted, an earlier "requested" booking that nobody marked
+    with "confirmed": true is therefore dropped so the flat is requested again.
+    """
+    for card_id, entry in reposted:
+        booking = entry.get("booking", {})
+        if booking.get("status") == "requested" and not booking.get("confirmed"):
+            print("Rebooking reposted flat: %s" % entry.get("address", card_id))
+            del entry["booking"]
+
+
 def merge_remote_bookings(ours_path, theirs_path):
     """Copy booking records from another copy of the state into ours.
 
@@ -681,6 +695,7 @@ def run_once(first_pass=True):
 
     preserve_booking_records(previous, listings)
     new, reposted, just_reserved = diff_listings(previous, listings)
+    release_unconfirmed_bookings(reposted)
     settings = booking_settings_from_env()
     save = lambda: save_state(listings)
     booking_results = auto_book_viewings(new + reposted, settings, save)

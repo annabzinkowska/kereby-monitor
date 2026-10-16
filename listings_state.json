@@ -26,6 +26,7 @@
   "28085": {
     "address": "Helgolandsgade 2, 5. th, 1653 København V",
     "booking": {
+      "confirmed": true,
       "requested_at": "2026-10-05T15:27:23.767240+02:00",
       "starts_at": "2026-10-07T08:00:00Z",
       "status": "requested"
@@ -113,6 +114,7 @@
   "28170": {
     "address": "Allersgade 1, 2. tv, 2200 København N",
     "booking": {
+      "confirmed": true,
       "requested_at": "2026-10-13T10:35:40.832881+02:00",
       "starts_at": "2026-10-15T08:00:00Z",
       "status": "requested"
@@ -142,6 +144,7 @@
   "28189": {
     "address": "Helgolandsgade 2, 5. th, 1653 København V",
     "booking": {
+      "confirmed": true,
       "requested_at": "2026-10-14T10:53:30.245353+02:00",
       "starts_at": "2026-10-16T08:00:00Z",
       "status": "requested"
