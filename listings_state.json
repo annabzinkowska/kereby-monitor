@@ -206,5 +206,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28250": {
+    "address": "Åboulevard 48, 5. th, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-16T12:39:31.308141+02:00",
+      "starts_at": "2026-10-19T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.68511671",
+    "lng": "12.55290373",
+    "rent": "16646",
+    "req": "Penthouse|Altan",
+    "rooms": "3",
+    "size": "85",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/aboulevard-48-5-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
