@@ -223,5 +223,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28262": {
+    "address": "Nørrebrogade 174, 1. th, 2200 København N",
+    "lat": "55.69657105",
+    "lng": "12.54578597",
+    "rent": "31800",
+    "req": "Delevenlig|Elevator",
+    "rooms": "5",
+    "size": "159",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/norrebrogade-174-1-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
