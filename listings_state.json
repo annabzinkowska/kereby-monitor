@@ -220,8 +220,8 @@
     "req": "Penthouse|Altan",
     "rooms": "3",
     "size": "85",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/aboulevard-48-5-th-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
