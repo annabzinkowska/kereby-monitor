@@ -194,5 +194,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28246": {
+    "address": "Bøhmensgade 9, 3. th, 2300 København S",
+    "lat": "55.66443707",
+    "lng": "12.60826243",
+    "rent": "9367",
+    "req": "",
+    "rooms": "3",
+    "size": "57",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/bohmensgade-9-3-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
