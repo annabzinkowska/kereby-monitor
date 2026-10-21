@@ -235,5 +235,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2500"
+  },
+  "28288": {
+    "address": "Vølundsgade 4, 3. tv, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-21T12:17:20.193303+02:00",
+      "starts_at": "2026-10-23T08:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.70015466",
+    "lng": "12.54903855",
+    "rent": "13605",
+    "req": "",
+    "rooms": "3",
+    "size": "83",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/volundsgade-4-3-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
