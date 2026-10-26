@@ -252,5 +252,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28294": {
+    "address": "Allersgade 1, 2. tv, 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-26T11:52:46.369312+01:00",
+      "starts_at": "2026-10-28T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.69655616",
+    "lng": "12.54590578",
+    "rent": "15279",
+    "req": "Elevator",
+    "rooms": "3",
+    "size": "95",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/allersgade-1-2-tv-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
