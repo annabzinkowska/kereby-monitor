@@ -283,8 +283,8 @@
     "req": "Delevenlig",
     "rooms": "4",
     "size": "85",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/heimdalsgade-12a-5-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
