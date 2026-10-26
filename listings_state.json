@@ -269,5 +269,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28307": {
+    "address": "Heimdalsgade 12A, 5., 2200 København N",
+    "booking": {
+      "requested_at": "2026-10-26T12:49:40.244162+01:00",
+      "starts_at": "2026-10-28T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.70022673",
+    "lng": "12.54175786",
+    "rent": "13968",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "85",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/heimdalsgade-12a-5-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
