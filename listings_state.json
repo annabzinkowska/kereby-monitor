@@ -286,5 +286,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28324": {
+    "address": "Gammel Kongevej 136, 4. 3, 1850 Frederiksberg C",
+    "booking": {
+      "requested_at": "2026-10-27T09:24:44.979507+01:00",
+      "starts_at": "2026-10-29T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.67705735",
+    "lng": "12.53960323",
+    "rent": "19520",
+    "req": "Elevator",
+    "rooms": "3",
+    "size": "117",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/gammel-kongevej-136-4-3-1850-frederiksberg-c/",
+    "zip": "1850"
   }
 }
