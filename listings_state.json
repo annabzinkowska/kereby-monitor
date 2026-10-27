@@ -300,8 +300,8 @@
     "req": "Elevator",
     "rooms": "3",
     "size": "117",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/gammel-kongevej-136-4-3-1850-frederiksberg-c/",
+    "state": "reserved",
+    "url": "",
     "zip": "1850"
   }
 }
