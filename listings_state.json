@@ -320,5 +320,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2200"
+  },
+  "28351": {
+    "address": "Falkoner Alle 12A, 3. th, 2000 Frederiksberg",
+    "booking": {
+      "requested_at": "2026-10-28T13:00:55.469986+01:00",
+      "starts_at": "2026-10-30T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.67935873",
+    "lng": "12.53384006",
+    "rent": "10773",
+    "req": "Elevator",
+    "rooms": "2",
+    "size": "63",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/falkoner-alle-12a-3-th-2000-frederiksberg/",
+    "zip": "2000"
   }
 }
