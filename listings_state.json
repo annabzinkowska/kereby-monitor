@@ -334,8 +334,8 @@
     "req": "Elevator",
     "rooms": "2",
     "size": "63",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/falkoner-alle-12a-3-th-2000-frederiksberg/",
+    "state": "reserved",
+    "url": "",
     "zip": "2000"
   }
 }
