@@ -337,5 +337,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/norrebrogade-174-5-tv-2200-kobenhavn-n/",
     "zip": "2200"
+  },
+  "28368": {
+    "address": "Drogdensgade 4, 5., 2300 København S",
+    "lat": "55.65950481",
+    "lng": "12.60762426",
+    "rent": "22050",
+    "req": "Altan",
+    "rooms": "4",
+    "size": "98",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/drogdensgade-4-5-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
