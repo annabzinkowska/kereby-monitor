@@ -349,5 +349,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/drogdensgade-4-5-2300-kobenhavn-s/",
     "zip": "2300"
+  },
+  "28382": {
+    "address": "Rodosvej 1, 3. tv, 2300 København S",
+    "lat": "55.65049413",
+    "lng": "12.6127727",
+    "rent": "13398",
+    "req": "",
+    "rooms": "3",
+    "size": "83",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/rodosvej-1-3-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
