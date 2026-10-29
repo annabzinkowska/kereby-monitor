@@ -224,18 +224,6 @@
     "url": "https://kereby.dk/bolig/norrebrogade-174-1-th-2200-kobenhavn-n/",
     "zip": "2200"
   },
-  "28278": {
-    "address": "Søndre Fasanvej 99, 5. tv, 2500 Valby",
-    "lat": "55.66689537",
-    "lng": "12.51745979",
-    "rent": "13176",
-    "req": "Altan",
-    "rooms": "2",
-    "size": "81",
-    "state": "reserved",
-    "url": "",
-    "zip": "2500"
-  },
   "28288": {
     "address": "Vølundsgade 4, 3. tv, 2200 København N",
     "booking": {
