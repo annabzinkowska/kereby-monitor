@@ -295,8 +295,8 @@
   "28338": {
     "address": "Åboulevard 48, 1. th, 2200 København N",
     "booking": {
-      "requested_at": "2026-10-28T11:14:07.185924+01:00",
-      "starts_at": "2026-10-30T09:00:00Z",
+      "requested_at": "2026-11-03T09:34:33.127402+01:00",
+      "starts_at": "2026-11-05T09:00:00Z",
       "status": "requested"
     },
     "lat": "55.68511671",
@@ -305,8 +305,8 @@
     "req": "",
     "rooms": "2",
     "size": "90",
-    "state": "reserved",
-    "url": "",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/aboulevard-48-1-th-2200-kobenhavn-n/",
     "zip": "2200"
   },
   "28351": {
