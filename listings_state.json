@@ -361,5 +361,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28389": {
+    "address": "Kronprinsensgade 10, 3., 1114 København K",
+    "lat": "55.68068008",
+    "lng": "12.57949421",
+    "rent": "25777",
+    "req": "",
+    "rooms": "4",
+    "size": "154",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/kronprinsensgade-10-3-1114-kobenhavn-k/",
+    "zip": "1114"
   }
 }
