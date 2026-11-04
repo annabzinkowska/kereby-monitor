@@ -373,5 +373,17 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/kronprinsensgade-10-3-1114-kobenhavn-k/",
     "zip": "1114"
+  },
+  "28403": {
+    "address": "Lillegrund 10A, st. th, 2300 København S",
+    "lat": "55.65788091",
+    "lng": "12.61319108",
+    "rent": "11888",
+    "req": "",
+    "rooms": "3",
+    "size": "75",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/lillegrund-10a-st-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
