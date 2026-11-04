@@ -382,8 +382,8 @@
     "req": "",
     "rooms": "3",
     "size": "75",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/lillegrund-10a-st-th-2300-kobenhavn-s/",
+    "state": "reserved",
+    "url": "",
     "zip": "2300"
   }
 }
