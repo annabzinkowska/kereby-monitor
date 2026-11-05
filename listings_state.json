@@ -385,5 +385,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28425": {
+    "address": "Norgesgade 7, 2. th, 2300 København S",
+    "lat": "55.66387062",
+    "lng": "12.59917914",
+    "rent": "7808",
+    "req": "",
+    "rooms": "2",
+    "size": "48",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/norgesgade-7-2-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
