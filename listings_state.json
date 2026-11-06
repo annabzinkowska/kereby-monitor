@@ -406,8 +406,8 @@
     "req": "Delevenlig",
     "rooms": "4",
     "size": "127",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/norrebrogade-41-3-th-2200-kobenhavn-n/",
+    "state": "reserved",
+    "url": "",
     "zip": "2200"
   }
 }
