@@ -385,5 +385,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28435": {
+    "address": "Lyongade 12, 3. th, 2300 København S",
+    "lat": "55.65971835",
+    "lng": "12.60785706",
+    "rent": "16350",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "100",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/lyongade-12-3-th-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
