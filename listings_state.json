@@ -397,5 +397,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28441": {
+    "address": "Nørrebrogade 41, 3. th, 2200 København N",
+    "lat": "55.68866209",
+    "lng": "12.55827079",
+    "rent": "20447",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "127",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/norrebrogade-41-3-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
