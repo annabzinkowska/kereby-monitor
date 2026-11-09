@@ -421,5 +421,22 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/jagtvej-183-1-tv-2100-kobenhavn/",
     "zip": "2100"
+  },
+  "28468": {
+    "address": "Sommerstedgade 12, 1. th, 1718 København V",
+    "booking": {
+      "requested_at": "2026-11-09T10:35:41.532455+01:00",
+      "starts_at": "2026-11-11T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.66693568",
+    "lng": "12.55553244",
+    "rent": "8874",
+    "req": "Altan",
+    "rooms": "2",
+    "size": "54",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/sommerstedgade-12-1-th-1718-kobenhavn-v/",
+    "zip": "1718"
   }
 }
