@@ -314,18 +314,6 @@
     "url": "",
     "zip": "2000"
   },
-  "28354": {
-    "address": "Nørrebrogade 174, 5. tv, 2200 København N",
-    "lat": "55.69657105",
-    "lng": "12.54578597",
-    "rent": "24010",
-    "req": "Elevator|Altan",
-    "rooms": "4",
-    "size": "145",
-    "state": "reserved",
-    "url": "",
-    "zip": "2200"
-  },
   "28368": {
     "address": "Drogdensgade 4, 5., 2300 København S",
     "lat": "55.65950481",
@@ -336,18 +324,6 @@
     "size": "98",
     "state": "available",
     "url": "https://kereby.dk/bolig/drogdensgade-4-5-2300-kobenhavn-s/",
-    "zip": "2300"
-  },
-  "28382": {
-    "address": "Rodosvej 1, 3. tv, 2300 København S",
-    "lat": "55.65049413",
-    "lng": "12.6127727",
-    "rent": "13398",
-    "req": "",
-    "rooms": "3",
-    "size": "83",
-    "state": "reserved",
-    "url": "",
     "zip": "2300"
   },
   "28389": {
