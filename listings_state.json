@@ -414,5 +414,22 @@
     "state": "reserved",
     "url": "",
     "zip": "1718"
+  },
+  "28489": {
+    "address": "Oehlenschlægersgade 46, 2. tv, 1663 København V",
+    "booking": {
+      "requested_at": "2026-11-10T12:02:52.126104+01:00",
+      "starts_at": "2026-11-12T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.66868364",
+    "lng": "12.54981773",
+    "rent": "12553",
+    "req": "",
+    "rooms": "3",
+    "size": "76",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/oehlenschlagersgade-46-2-tv-1663-kobenhavn-v/",
+    "zip": "1663"
   }
 }
