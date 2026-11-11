@@ -440,8 +440,8 @@
     "req": "Delevenlig",
     "rooms": "3",
     "size": "91",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/englandsvej-2-3-tv-2300-kobenhavn-s/",
+    "state": "reserved",
+    "url": "",
     "zip": "2300"
   }
 }
