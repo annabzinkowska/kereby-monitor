@@ -431,5 +431,17 @@
     "state": "reserved",
     "url": "",
     "zip": "1663"
+  },
+  "28528": {
+    "address": "Englandsvej 2, 3. tv, 2300 København S",
+    "lat": "55.65813233",
+    "lng": "12.60720697",
+    "rent": "14803",
+    "req": "Delevenlig",
+    "rooms": "3",
+    "size": "91",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/englandsvej-2-3-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
