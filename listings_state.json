@@ -443,5 +443,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28540": {
+    "address": "Herluf Trolles Gade 3, 3. tv, 1052 København K",
+    "lat": "55.67931788",
+    "lng": "12.58899752",
+    "rent": "28685",
+    "req": "",
+    "rooms": "6",
+    "size": "175",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/herluf-trolles-gade-3-3-tv-1052-kobenhavn-k/",
+    "zip": "1052"
   }
 }
