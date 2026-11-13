@@ -469,8 +469,8 @@
     "req": "",
     "rooms": "3",
     "size": "85",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/nygardsvej-16-1-th-2100-kobenhavn/",
+    "state": "reserved",
+    "url": "",
     "zip": "2100"
   }
 }
