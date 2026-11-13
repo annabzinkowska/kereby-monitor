@@ -455,5 +455,22 @@
     "state": "available",
     "url": "https://kereby.dk/bolig/herluf-trolles-gade-3-3-tv-1052-kobenhavn-k/",
     "zip": "1052"
+  },
+  "28549": {
+    "address": "Nygårdsvej 16, 1. th, 2100 København Ø",
+    "booking": {
+      "requested_at": "2026-11-13T09:48:05.357855+01:00",
+      "starts_at": "2026-11-16T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.71255811",
+    "lng": "12.57480249",
+    "rent": "13933",
+    "req": "",
+    "rooms": "3",
+    "size": "85",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/nygardsvej-16-1-th-2100-kobenhavn/",
+    "zip": "2100"
   }
 }
