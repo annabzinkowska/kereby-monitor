@@ -460,5 +460,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
+  },
+  "28589": {
+    "address": "Ved Klosteret 4, st. th, 2100 København Ø",
+    "booking": {
+      "requested_at": "2026-11-16T14:23:36.535329+01:00",
+      "starts_at": "2026-11-18T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.70756836",
+    "lng": "12.56584465",
+    "rent": "18108",
+    "req": "Delevenlig",
+    "rooms": "4",
+    "size": "108",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/ved-klosteret-4-st-th-2100-kobenhavn/",
+    "zip": "2100"
   }
 }
