@@ -314,18 +314,6 @@
     "url": "",
     "zip": "2000"
   },
-  "28368": {
-    "address": "Drogdensgade 4, 5., 2300 København S",
-    "lat": "55.65950481",
-    "lng": "12.60762426",
-    "rent": "22050",
-    "req": "Altan",
-    "rooms": "4",
-    "size": "98",
-    "state": "reserved",
-    "url": "",
-    "zip": "2300"
-  },
   "28389": {
     "address": "Kronprinsensgade 10, 3., 1114 København K",
     "lat": "55.68068008",
