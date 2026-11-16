@@ -474,8 +474,8 @@
     "req": "Delevenlig",
     "rooms": "4",
     "size": "108",
-    "state": "available",
-    "url": "https://kereby.dk/bolig/ved-klosteret-4-st-th-2100-kobenhavn/",
+    "state": "reserved",
+    "url": "",
     "zip": "2100"
   }
 }
