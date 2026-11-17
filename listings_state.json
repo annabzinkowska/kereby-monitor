@@ -489,5 +489,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2300"
+  },
+  "28607": {
+    "address": "Valby Langgade 75, 3. th, 2500 Valby",
+    "lat": "55.66594929",
+    "lng": "12.51289642",
+    "rent": "10703",
+    "req": "",
+    "rooms": "3",
+    "size": "67",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/valby-langgade-75-3-th-2500-valby/",
+    "zip": "2500"
   }
 }
