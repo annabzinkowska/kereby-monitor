@@ -477,5 +477,17 @@
     "state": "reserved",
     "url": "",
     "zip": "2100"
+  },
+  "28601": {
+    "address": "Bredegrund 42, 2. tv, 2300 København S",
+    "lat": "55.65818115",
+    "lng": "12.61323404",
+    "rent": "11606",
+    "req": "",
+    "rooms": "3",
+    "size": "74",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/bredegrund-42-2-tv-2300-kobenhavn-s/",
+    "zip": "2300"
   }
 }
