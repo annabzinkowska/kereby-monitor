@@ -501,5 +501,22 @@
     "state": "reserved",
     "url": "",
     "zip": "2500"
+  },
+  "28645": {
+    "address": "Nørrebrogade 30, 2. th, 2200 København N",
+    "booking": {
+      "requested_at": "2026-11-17T12:55:11.040307+01:00",
+      "starts_at": "2026-11-19T09:00:00Z",
+      "status": "requested"
+    },
+    "lat": "55.68867721",
+    "lng": "12.5589614",
+    "rent": "15696",
+    "req": "",
+    "rooms": "4",
+    "size": "96",
+    "state": "available",
+    "url": "https://kereby.dk/bolig/norrebrogade-30-2-th-2200-kobenhavn-n/",
+    "zip": "2200"
   }
 }
